@@ -30,10 +30,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for fc in facultad %}
+                    {% for elem in data %}
                         <tr>
-                            {% for atr in fc %}
-                                <td>{{ atr }}</td>
+                            {% for dt in elem %}
+                                <td>{{ dt }}</td>
                             {% endfor %}
                         </tr>
                     {% endfor %}

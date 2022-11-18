@@ -18,6 +18,10 @@ from django.urls import path
 from academico.views import *
 
 urlpatterns = [
+    path('', main),
     path('admin/', admin.site.urls),
-    path("facultades/", facultades)
+    path("facultades/", facultades),
+    path("carreras/", carreras),
+    path("cursos/", cursos),
+    path("docentes/", docentes)
 ]
