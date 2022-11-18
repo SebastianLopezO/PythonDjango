@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+    <head><meta charset="UTF-8">
+    <title>Document</title>
+    </head>
+    <body>BIENVENIDO A LA PLATAFORMA DE LA UNIVERSIDAD</body>
+    {{actual}}
+
+    {% for i in facultad %}
+    {% if i.secretary == 'TATIANA' %}
+    <h2>{{i.name}}</h2>
+    {% endif %}
+    {% endfor %}
+</html>
