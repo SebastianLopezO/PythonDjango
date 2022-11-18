@@ -24,21 +24,17 @@
             <table class="table table-dark table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Decano</th>
-                        <th scope="col">Secretaria</th>
+                        {% for sc in schema %}
+                            <th scope="col">{{ sc.name }}</th>
+                        {% endfor %}
                     </tr>
                 </thead>
                 <tbody>
-                    {% for elem in facultad %}
+                    {% for fc in facultad %}
                         <tr>
-                            <th scope="row">{{ elem.id }}</th>
-                            <td>{{ elem.name }}</td>
-                            <td>{{ elem.description }}</td>
-                            <td>{{ elem.decano }}</td>
-                            <td>{{ elem.secretary }}</td>
+                            {% for atr in fc %}
+                                <td>{{ atr }}</td>
+                            {% endfor %}
                         </tr>
                     {% endfor %}
                 </tbody>
