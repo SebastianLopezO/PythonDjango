@@ -27,6 +27,7 @@
                         {% for sc in schema %}
                             <th scope="col">{{ sc.name }}</th>
                         {% endfor %}
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,10 @@
                             {% for dt in elem %}
                                 <td>{{ dt }}</td>
                             {% endfor %}
+                            <td>
+                                <a href="/modificar?id={{ elem.0 }}" class="btn btn-warning">Modificar</a>
+                                <a href="/eliminar?id={{ elem.0 }}" class="btn btn-danger">Eliminar</a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
