@@ -18,34 +18,22 @@
         <div class="grid text-center container-sm">
             <div class="mb-5">
                 <h1>BIENVENIDO A LA PLATAFORMA DE LA UNIVERSIDAD.</h1>
-                <h2>{{actual}}</h2>
+                <h2>¿Quieres {{action}}  al usuario?</h2>
             </div>
-
             <table class="table table-dark table-striped table-hover">
                 <thead>
                     <tr>
                         {% for sc in schema %}
                             <th scope="col">{{ sc.name }}</th>
                         {% endfor %}
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
                     {% for elem in data %}
-                        <tr>
-                            {% for dt in elem %}
-                                <td>{{ dt }}</td>
-                            {% endfor %}
-                            <td>
-                                <a href="/modificar?id={{ elem.0 }}&model={{ model }}" class="btn btn-warning">Modificar</a>
-                                <a href="/eliminar?id={{ elem.0 }}&model={{ model }}" class="btn btn-danger">Eliminar</a>
-                            </td>
-                        </tr>
+                            <td>{{ elem }}</td>
                     {% endfor %}
+                    </tr>
                 </tbody>
-            </table>
         </div>
     </div>
-</body>
-
-</html>

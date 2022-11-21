@@ -9,13 +9,42 @@ def main(request) :
     # contexto
     context = {"actual":actual}
     return render(request, "main.html", context)
+    
+def SelectModel(model):
+    model = model.lower()
+    if(model=="facultad"):
+        return Facultad
+    elif(model=="carrera"):
+        return Carrera
+    elif(model=="docente"):
+        return Docente
+    elif(model=="curso"):
+        return Curso
+
+def eliminar(request) :
+    user =  request.GET.get('id')
+    model =  SelectModel(request.GET.get('model'))
+    data = model.objects.values_list().get(id=user)
+    schema = model._meta.fields
+    # contexto
+    context = {"id":user, "data":data, "schema":schema, "action":"Eliminar"}
+    return render(request, "actions.html", context)
+    
+def modificar(request) :
+    user =  request.GET.get('id')
+    model =  SelectModel(request.GET.get('model'))
+    data = model.objects.values_list().get(id=user)
+    schema = model._meta.fields
+    # contexto
+    context = {"id":user, "data":data, "schema":schema, "action":"Modificar"}
+    return render(request, "actions.html", context)    
 
 def facultades(request) :
     data = Facultad.objects.values_list()
     schema = Facultad._meta.fields
     actual = datetime.now()
     # contexto
-    context = {"data":data, "actual":actual,"schema":schema}
+    context = {"data":data, "actual":actual,"schema":schema, "model":"Facultad"}
     return render(request, "crud.html", context)
     
 def carreras(request) :
@@ -23,7 +52,7 @@ def carreras(request) :
     schema = Carrera._meta.fields
     actual = datetime.now()
     # contexto
-    context = {"data":data, "actual":actual,"schema":schema}
+    context = {"data":data, "actual":actual,"schema":schema, "model":"Carrera"}
     return render(request, "crud.html", context)
     
 def cursos(request) :
@@ -31,7 +60,7 @@ def cursos(request) :
     schema = Curso._meta.fields
     actual = datetime.now()
     # contexto
-    context = {"data":data, "actual":actual,"schema":schema}
+    context = {"data":data, "actual":actual,"schema":schema, "model":"Curso"}
     return render(request, "crud.html", context)
 
 def docentes(request) :
@@ -39,6 +68,6 @@ def docentes(request) :
     schema = Docente._meta.fields
     actual = datetime.now()
     # contexto
-    context = {"data":data, "actual":actual,"schema":schema}
+    context = {"data":data, "actual":actual,"schema":schema, "model":"Docente"}
     return render(request, "crud.html", context)
     
