@@ -26,6 +26,9 @@ def eliminar(request) :
     model =  SelectModel(request.GET.get('model'))
     data = model.objects.values_list().get(id=user)
     schema = model._meta.fields
+    
+    #eliminar
+    model.objects.filter(id=user).delete()
     # contexto
     context = {"id":user, "data":data, "schema":schema, "action":"Eliminar"}
     return render(request, "actions.html", context)
