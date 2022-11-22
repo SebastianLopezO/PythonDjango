@@ -40,6 +40,21 @@ def modificar(request) :
     schema = model._meta.fields
     # contexto
     context = {"id":user, "data":data, "schema":schema, "action":"Modificar"}
+    return render(request, "actions.html", context) 
+    
+def crear(request) :
+    name =  request.GET.get('name')
+    description = request.GET.get('description')
+    decano = request.GET.get('decano')
+    secretary =request.GET.get('secretary')
+    
+    model =  SelectModel(request.GET.get('model'))
+    model(name=name, description=description, decano=decano, secretary=secretary).save()
+    
+    data = model.objects.values_list().get(name=name)
+    schema = model._meta.fields
+    # contexto
+    context = {"data":data, "schema":schema, "action":"Crear"}
     return render(request, "actions.html", context)    
 
 def facultades(request) :
