@@ -27,6 +27,8 @@ def eliminar(request) :
     data = model.objects.values_list().get(id=user)
     schema = model._meta.fields
     
+    
+    
     #eliminar
     model.objects.filter(id=user).delete()
     # contexto
